@@ -2,11 +2,18 @@
 /*Bu görevleri yaparken çıktıların doğru çalıştığını kontrol etmeniz için console.log'u sıklıkla kullanmanızı tavsiye ediyoruz.*/
 
 ///////////////Menu Elemanları ///////////////////
-const cay = {isim: "Çay", fiyat: 4, kategori: "İçecekler"};
-const serpmeKahvalti = {isim: "Serpme Kahvaltı", fiyat: 16, kategori:"Kahvaltı"};
+const cay = {
+	isim: "Çay", 
+	fiyat: 4,
+ 	kategori: "İçecekler"};
+const serpmeKahvalti = {
+	isim: "Serpme Kahvaltı", 
+	fiyat: 16,
+ 	kategori:"Kahvaltı"};
 
 /* Görev 1a: Nesneler döndüren bir fonksiyon yazın
-	Aşağıdaki MenuElemaniOlustur fonksiyonunu, yukarıda gördüğünüz cay ve serpmeKahvalti (isim, fiyat, kategori) nesnelerini oluşturacak şekilde yazın. 
+	Aşağıdaki MenuElemaniOlustur fonksiyonunu, yukarıda gördüğünüz cay ve serpmeKahvalti (isim, fiyat, kategori) nesnelerini
+	 oluşturacak şekilde yazın. 
 	Fonksiyonun özellikleri:
 	1. Nesne(object) oluşturmak için gerekli parametleri alacak
 	2. Alınan değerleri kullanarak oluşturulan nesne(object) döndürülecek(return)
@@ -15,9 +22,21 @@ const serpmeKahvalti = {isim: "Serpme Kahvaltı", fiyat: 16, kategori:"Kahvaltı
 */
 
 
-function MenuElemaniOlustur(/*Kodlar buraya*/){
-	/*Kodlar buraya*/
-}
+function MenuElemaniOlustur(name,price,category){
+	const yeniNesne = {
+		isim : name ,
+		fiyat : price ,
+		kategori : category,
+	};
+	for ( let key in MenuElemaniOlustur) {
+		console.log(MenuElemaniOlustur[key]);
+	}
+	console.log("GÖREV-1A : ",yeniNesne);
+	return yeniNesne ;
+} 
+MenuElemaniOlustur("Cheeseburger",8,"Burgerler")
+
+;
 
 
 
@@ -29,16 +48,23 @@ function MenuElemaniOlustur(/*Kodlar buraya*/){
 	3. Tüm döndürülen sonuçları konsolda gözlemleyin (console.log)
 	
 	Örnek: MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar") şunu döndürür: {isim:"Karışık Pizza",fiyat:5,kategori:"Pizzalar"}
-*/
-
+*/ const kafiShop_Amerkano = MenuElemaniOlustur("Amerikano", 42, "Espresso Bazlı");
+const kafiShop_TurkishCoffee = MenuElemaniOlustur(
+	"Türk Kahvesi",
+	28,
+	"Yerel Lezzetler"
+  );
+  const kafiShop_Latte = MenuElemaniOlustur("Latte", 50, "Sütlü");
 
 
 /* Görev 2: 
-	Özel bir öğle yemeği yiyorsun! Öğretmen ve öğrencilere %25, diğer kişilere %10 indirim var. Aşağıdaki burger nesnesine, indirimi fiyatı otomatik olarak hesaplayan bir metot ekleyin.
+	Özel bir öğle yemeği yiyorsun! Öğretmen ve öğrencilere %25, diğer kişilere %10 indirim var.
+	 Aşağıdaki burger nesnesine, indirimi fiyatı otomatik olarak hesaplayan bir metot ekleyin.
 	
 	burger nesnesine aşağıdakileri uygulayın:
 	1. burger nesnesine adı indirim olan bir metot ekleyin
-	2. Argüman olarak indirim metodu parametre olarak bir string kabul edecek ve bu string "öğretmen", "öğrenci", ya da "diğer" değerine sahip olacak.
+	2. Argüman olarak indirim metodu parametre olarak bir string kabul edecek ve bu string "öğretmen", "öğrenci", 
+	ya da "diğer" değerine sahip olacak.
 	3. Bu stringe göre gerekli indirimli fiyat döndürülecek
 	4. String argümanına, 'öğretmen', 'öğrenci', ya da 'diğer' değerlerinden birini kullanarak fonksiyonunuzu çağırın.
 	
@@ -47,13 +73,24 @@ function MenuElemaniOlustur(/*Kodlar buraya*/){
 
 
 const burger = {
-	isim: "Burger", 
-	fiyat: 18, 
-	kategori: "Öğle Yemeği", 
-
-}
-
-
+	isim: "Burger",
+	fiyat: 18,
+	kategori: "Öğle Yemeği",
+	indirim: (kisi) => {
+	  if (kisi == "öğretmen" || kisi == "öğrenci") {
+		return burger.fiyat * 0.75;
+	  } else {
+		// else if (kisi=="diğer")
+		return burger.fiyat * 0.9;
+	  }
+	},
+  };
+  
+  console.log("GÖREV-2 : ",burger.fiyat);
+  console.log("GÖREV-2 : ",burger.indirim("öğretmen"));
+  console.log("GÖREV-2 : ",burger.indirim("öğrenci"));
+  console.log("GÖREV-2 : ",burger.indirim("diğer"));
+  console.log("GÖREV-2 : ",burger.fiyat);
 
 ///////////////Değerlendirmeler (MVP)///////////////////
 const degerlendirmeler = [
@@ -71,33 +108,47 @@ const degerlendirmeler = [
 	Yukarıdaki degerlendirmeler dizisini(array) kullanarak:
 	1. Sadece Ahmet'in geribildirimini konsolda görüntüleyin - fonksiyona gerek yok
 */
-
-
+//console.log(degerlendirmeler[5]);
+degerlendirmeler.filter((e) => {
+	e.isim === 'Ahmet' ? console.log ("GÖREV-3 : ",e.geribildirim) : null ;
+} ) ;
 
 /*  Görev 4 (ototest yok):  
 	Reyna'nın geribildirimi girilmemiş! Aşağıdakileri uygulayın: (fonksiyona gerek yok) 
-	1. Bu geribildirimi Reyna'nın değerlendirmesine ekleyin - "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
+	1. Bu geribildirimi Reyna'nın değerlendirmesine ekleyin - "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan
+	 kırdım"
 	2. degerlendirmeler dizisini konsolda görüntüleyerek çalışmanızı kontrol edin
 */
-
+degerlendirmeler.push( {isim: "Reyna", puan: 3.5, geribildirim: "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kirdim"}) ;
+//degerlendirmeler.splice(7,0,reynaDegerlendirme) ;
+console.log("Görev 4 :",degerlendirmeler); 
 
 
 /*  Görev 5: 
-	isim, puan, geribildirim'i içeren bir değerlendirme nesnesi oluşturup, yeni değerlendirmeyi mevcut dizinin(array) sonuna ekleyip sonuç dizisini döndüren bir fonksiyon tanımlayın. 
+	isim, puan, geribildirim'i içeren bir değerlendirme nesnesi oluşturup, yeni değerlendirmeyi mevcut 
+	dizinin(array) sonuna ekleyip sonuç dizisini döndüren bir fonksiyon tanımlayın. 
 	
 	DegerledirmeEkle fonksiyonunu kullanarak aşağıdakileri uygulayın:
 	1. Verilen degerlendirmeler dizisini fonksiyonun İLK parametresi olarak alacak
 	2. Şu parametreleri alacak: isim, puan, and geribildirim; bunları İKİNCİ, ÜÇÜNCÜ ve DÖRDÜNCÜ parametre olarak alacak
 	3. Fonksiyon yeni bir nesne yaratacak ve dizinin sonuna bu nesneyi ekleyecek.
-	🌟 ÖRNEK: DegerledirmeEkle(degerlendirmeler, 'Hurşut', 2, 'Boktan yemekler!') dizinin sonuna şunu eklemeli: {isim: 'Hurşut', puan: 2, geribildirim: 'Boktan yemekler!'}
+	🌟 ÖRNEK: DegerledirmeEkle(degerlendirmeler, 'Hurşut', 2, 'Boktan yemekler!') dizinin sonuna 
+	şunu eklemeli: {isim: 'Hurşut', puan: 2, geribildirim: 'Boktan yemekler!'}
 	4. Güncellenmiş diziyi döndürecek
 */
 
 
-function DegerledirmeEkle(/*Kodlar buraya */){
-	/*Kodlar buraya */
-	
+function DegerledirmeEkle(guncelDizi,name,puan,feedback){
+	const	newobject = {
+		isim: name,
+		puan: puan,
+		geribildirim:feedback
+	} ;
+	guncelDizi.push (newobject);
+	console.log("GÖREV-5 : ",guncelDizi);
+	return guncelDizi ;
 }
+DegerledirmeEkle (degerlendirmeler,"Hurşut",2,"Boktan Yemekler!") ;
 
 
 
@@ -112,11 +163,13 @@ function DegerledirmeEkle(/*Kodlar buraya */){
 */
 
 
-function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
-
+function AnahtardanDegerlendirmeAl(dizi,index) {
+	const x= dizi[index] ;
+	const mess =`${x.isim} isimli kişi ${x.puan} puan verdi ve şunlari yazdi : ${x.geribildirim}` ;
+	console.log ("Görev 6 : ",mess) ;
+	return mess ;
 }
-
+ AnahtardanDegerlendirmeAl (degerlendirmeler,0) ;
 
 
 /*  Görev 7:  
@@ -132,10 +185,12 @@ function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
 */
 
 
-function SonDegerlendirmeyiAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
+function SonDegerlendirmeyiAl(array) {
+	const x =degerlendirmeler [7] ;
+	console.log ("Görev 7 : ",x) ;
+	return x ;
 } 
-
+SonDegerlendirmeyiAl(degerlendirmeler) ;
 
 
 /////////////// BONUS  GÖRVLER////////////////////
@@ -154,10 +209,17 @@ function SonDegerlendirmeyiAl(/*Kodlar buraya*/) {
 	]
 */
 
-function PuanaGoreDegerlendirmeAl(/* Kodlar buraya */) {
-    /* Kodlar buraya */
+function PuanaGoreDegerlendirmeAl(array,degerPuan) {
+	sonuc=[];
+	for (let i=0 ; i<array.length; i++) {
+		if(array[i].puan < degerPuan +1 && array[i].puan >= degerPuan) 
+		{
+			sonuc.push(array[i]);
+		}
+	}
+    return sonuc ;
 }
-
+console.log("BONUS-1 : ",PuanaGoreDegerlendirmeAl (degerlendirmeler,3)) ; 
 
 /*  BONUS 2:    
 	UzunDegerlendirmeleriAl fonksiyonuna aşağıdakileri uygulayın:
@@ -166,9 +228,17 @@ function PuanaGoreDegerlendirmeAl(/* Kodlar buraya */) {
 	
 */
 
-function UzunDegerlendirmeleriAl(/* Kodlar buraya */) {
-    /* Kodlar buraya */
+function UzunDegerlendirmeleriAl(dizi) {
+
+    UzunDegerlendirmeList= [];
+	for (let i=0 ; i < dizi.length ;i++) {
+		if(dizi[i].geribildirim.split(" ").length > 15) {
+			UzunDegerlendirmeList.push(dizi[i]);
+		}
+	}
+	return UzunDegerlendirmeList 
 }
+console.log("BONUS-2 : ", UzunDegerlendirmeleriAl (degerlendirmeler)) ;
 
 
 /*  BONUS 3:  
@@ -189,10 +259,20 @@ function UzunDegerlendirmeleriAl(/* Kodlar buraya */) {
 */
 
 
-function arabaYapici(/* Kodlar buraya */) {
-    /* Kodlar buraya */
-    
-}
+function arabaYapici(kilometreSayaci) {
+	let araba = {};
+	araba.kilometreSayaci = kilometreSayaci;
+	
+	araba.surus = function(mesafe) {
+	  this.kilometreSayaci += mesafe;
+	  return this.kilometreSayaci;
+	};
+	
+	return araba;
+  }
+  
+  let araba1 = arabaYapici(10);
+  console.log(araba1.surus(100)); // 110
 
 
 /*  Buradan aşağıdaki kodları değiştirmeyin lütfen */
@@ -201,6 +281,7 @@ function sa(){
 	return 'as';
 }
 sa();
+console.log("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 module.exports = {
 	sa,
 	MenuElemaniOlustur,
